@@ -2,6 +2,9 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-4/12 bg-white p-6 rounded-lg">
+            @if(Session('status'))
+                <div class="bg-red-600 p-4 mb-6 rounded-lg text-white text-center">{{ Session('status') }}</div>
+            @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-4">
@@ -27,6 +30,13 @@
                         {{ $message }}
                     </div>
                     @enderror
+                </div>
+                <div class="mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2">
+                        <label for="remember">Remember me</label>
+                    </div>
+
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 w-full rounded">
                     Login
